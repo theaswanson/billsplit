@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { BillService } from '../bill.service';
-import { FlatBill, ItemizedBill } from '../models';
+import { Bill, FlatBill, ItemizedBill, Person } from '../models';
 
 @Component({
   selector: 'app-itemized-bills',
@@ -10,6 +10,8 @@ import { FlatBill, ItemizedBill } from '../models';
 export class ItemizedBillsComponent implements OnInit {
   
   itemizedBills: ItemizedBill[] = [];
+  @Input()
+  people: Person[];
 
   constructor(private billService: BillService) { }
 
@@ -37,9 +39,19 @@ export class ItemizedBillsComponent implements OnInit {
     return this.billService.getSumOfItemizedBill(bill);
   }
 
+  togglePerson(bill: FlatBill, person: Person): void {
+    this.billService.togglePerson(bill, person);
+  }
+
   printItemizedBills(): void {
     let json = JSON.stringify(this.itemizedBills);
     console.log(json);
+  }
+
+  getPersonButtonClass(item: FlatBill, person: Person): any {
+    return {
+      'success': item.people.findIndex(x => x.id === person.id) >= 0
+    };
   }
 
 }

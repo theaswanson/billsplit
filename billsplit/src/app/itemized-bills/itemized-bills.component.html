@@ -8,7 +8,7 @@
     <div class="header">
       <div class="name">{{itemizedBill.name}}</div>
       <input type="text" [(ngModel)]="itemizedBill.name">
-      <div>${{getSumOfItemizedBill(itemizedBill) | number:'1.2-2'}}</div>
+      <div class="cost">${{getSumOfItemizedBill(itemizedBill) | number:'1.2-2'}}</div>
       <button class="success" (click)="addItem(itemizedBill)">Add Item</button>
       <button class="danger" (click)="deleteItemizedBill(itemizedBill)">Delete</button>
     </div>
@@ -19,6 +19,9 @@
       <div class="item" *ngFor="let item of itemizedBill.items">
         <input type="text" [(ngModel)]="item.name">
         <input type="number" [(ngModel)]="item.cost">
+        <div *ngFor="let person of people">
+          <button [ngClass]="getPersonButtonClass(item, person)" (click)="togglePerson(item, person)">{{person.name.charAt(0)}}</button>
+        </div>
         <button class="danger" (click)="deleteItem(itemizedBill, item)">Delete</button>
       </div>
     </div>

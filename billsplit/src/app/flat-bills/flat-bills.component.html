@@ -9,6 +9,9 @@
       <div class="name">{{flatBill.name}}</div>
       <input type="text" [(ngModel)]="flatBill.name">
       <input type="number" [(ngModel)]="flatBill.cost">
+      <div *ngFor="let person of people">
+        <button [ngClass]="getPersonButtonClass(flatBill, person)" (click)="togglePerson(flatBill, person)">{{person.name.charAt(0)}}</button>
+      </div>
       <button class="danger" (click)="deleteFlatBill(flatBill)">Delete</button>
     </div>
   </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BillService } from './bill.service';
+import { Person } from './models';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,12 @@ import { BillService } from './bill.service';
 })
 export class AppComponent {
   title = 'billsplit';
+  people: Person[] = [
+    { id: '1', name: 'Adam' } as Person,
+    { id: '2', name: 'Jacob' } as Person,
+    { id: '3', name: 'Shelby' } as Person,
+    { id: '4', name: 'Bill' } as Person,
+  ];
 
   constructor(private billService: BillService) { }
 
@@ -23,5 +30,9 @@ export class AppComponent {
 
   getSumOfFlatBills(): number {
     return this.billService.getSumOfFlatBills();
+  }
+
+  getPersonTotal(person: Person): number {
+    return this.billService.getPersonTotal(person);
   }
 }

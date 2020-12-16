@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { BillService } from '../bill.service';
-import { FlatBill } from '../models';
+import { FlatBill, Person } from '../models';
 
 @Component({
   selector: 'app-flat-bills',
@@ -10,6 +10,8 @@ import { FlatBill } from '../models';
 export class FlatBillsComponent implements OnInit {
 
   flatBills: FlatBill[] = [];
+  @Input()
+  people: Person[];
   
   constructor(private billService: BillService) { }
 
@@ -28,6 +30,16 @@ export class FlatBillsComponent implements OnInit {
   printFlatBills(): void {
     let json = JSON.stringify(this.flatBills);
     console.log(json);
+  }
+
+  togglePerson(bill: FlatBill, person: Person): void {
+    this.billService.togglePerson(bill, person);
+  }
+
+  getPersonButtonClass(item: FlatBill, person: Person): any {
+    return {
+      'success': item.people.findIndex(x => x.id === person.id) >= 0
+    };
   }
 
 }
