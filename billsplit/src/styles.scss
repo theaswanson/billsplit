@@ -14,43 +14,61 @@ button {
   border-radius: 10px;
   padding: 0 1rem;
   height: 2rem;
+
+  &.danger {
+    background-color: red;
+  }
+
+  &.success {
+    background-color: green;
+  }
 }
 
 input {
   height: 2rem;
-  border: 1px solid black;
-  border-radius: 10px;
+  border: none;
+  border-bottom: 1px solid black;
   text-decoration: none;
   padding-left: 0.5rem;
 }
 
 .bills {
-  .header {
+  padding: 1rem;
+  max-width: 40rem;
+
+  >.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 30rem;
 
-    .name {
-      font-size: 1.5rem;
+    >.name {
+      font-size: 2rem;
     }
   }
 
-  .bill {
-    .header {
+  >.bill {
+    padding: 0 1rem;
+
+    >.header {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 1rem;
 
-      .name {
+      >.name {
         font-size: 1.5rem;
+        font-weight: bold;
       }
     }
 
-    .item {
+    >.items {
       padding: 1rem;
-      display: flex;
-      justify-content: space-between;
+
+      >.item {
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+      }
     }
   }
 }
