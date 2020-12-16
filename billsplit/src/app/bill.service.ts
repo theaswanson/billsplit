@@ -71,6 +71,22 @@ export class BillService {
     }
   }
 
+  getSumOfItemizedBill(bill: ItemizedBill): number {
+    return this.getSumOfBills(bill.items);
+  }
+
+  getSumOfItemizedBills(): number {
+    let total = 0;
+    for (let itemizedBill of this.itemizedBills) {
+      total += this.getSumOfItemizedBill(itemizedBill);
+    }
+    return total;
+  }
+
+  getSumOfFlatBills(): number {
+    return this.getSumOfBills(this.flatBills);
+  }
+
   getSumOfBills(bills: FlatBill[]): number {
     let total = 0;
     for (let bill of bills) {

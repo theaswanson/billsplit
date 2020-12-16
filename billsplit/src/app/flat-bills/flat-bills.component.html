@@ -1,0 +1,8 @@
+<button (click)="addFlatBill()">Add Flat Bill</button>
+<div class="bill" *ngFor="let flatBill of flatBills">
+  <div class="name">{{flatBill.name}}</div>
+  <input type="text" [(ngModel)]="flatBill.name">
+  <input type="number" [(ngModel)]="flatBill.cost">
+  <button (click)="deleteFlatBill(flatBill)">Delete</button>
+</div>
+<button (click)="printFlatBills()">Print to console</button>

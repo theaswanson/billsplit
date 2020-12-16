@@ -1,26 +1,5 @@
-<button (click)="addItemizedBill()">Add Itemized Bill</button>
-<div class="bill" *ngFor="let itemizedBill of itemizedBills">
-  <div class="name">{{itemizedBill.name}}</div>
-  <input type="text" [(ngModel)]="itemizedBill.name">
-  <button (click)="addItem(itemizedBill)">Add Item</button>
-  <div class="item" *ngFor="let item of itemizedBill.items">
-    <input type="text" [(ngModel)]="item.name">
-    <input type="number" [(ngModel)]="item.cost">
-    <button (click)="deleteItem(itemizedBill, item)">Delete</button>
-  </div>
-  <button (click)="deleteItemizedBill(itemizedBill)">Delete</button>
-  <div>{{getSumOfItemizedBill(itemizedBill) | number:'1.2-2'}}</div>
-</div>
-<button (click)="printItemizedBills()">Print to console</button>
-
-<button (click)="addFlatBill()">Add Flat Bill</button>
-<div class="bill" *ngFor="let flatBill of flatBills">
-  <div class="name">{{flatBill.name}}</div>
-  <input type="text" [(ngModel)]="flatBill.name">
-  <input type="number" [(ngModel)]="flatBill.cost">
-  <button (click)="deleteFlatBill(flatBill)">Delete</button>
-</div>
-<button (click)="printFlatBills()">Print to console</button>
+<app-itemized-bills></app-itemized-bills>
+<app-flat-bills></app-flat-bills>
 
 <div>Total Cost: {{getTotalSum() | number:'1.2-2'}}</div>
 <div>Itemized Bills Cost: {{getSumOfItemizedBills() | number:'1.2-2'}}</div>
