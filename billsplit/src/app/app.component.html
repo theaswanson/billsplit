@@ -3,6 +3,17 @@
 <app-flat-bills></app-flat-bills>
 <hr>
 
-<div>Total Cost: {{getTotalSum() | number:'1.2-2'}}</div>
-<div>Itemized Bills Cost: {{getSumOfItemizedBills() | number:'1.2-2'}}</div>
-<div>Flat Bills Cost: {{getSumOfFlatBills() | number:'1.2-2'}}</div>
+<table>
+    <tr>
+        <td>Total Cost</td>
+        <td><b>${{getTotalSum() | number:'1.2-2'}}</b></td>
+    </tr>
+    <tr>
+        <td>Itemized Bills Cost</td>
+        <td><b>${{getSumOfItemizedBills() | number:'1.2-2'}}</b></td>
+    </tr>
+    <tr>
+        <td>Flat Bills Cost</td>
+        <td><b>${{getSumOfFlatBills() | number:'1.2-2'}}</b></td>
+    </tr>
+</table>
