@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { faPlusCircle, faTerminal } from '@fortawesome/free-solid-svg-icons';
 import { BillService } from '../bill.service';
 import { FlatBill, Person } from '../models';
 
@@ -9,6 +10,9 @@ import { FlatBill, Person } from '../models';
 })
 export class FlatBillsComponent implements OnInit {
 
+  faPlusCircle = faPlusCircle;
+  faTerminal = faTerminal;
+  
   flatBills: FlatBill[] = [];
   @Input()
   people: Person[];

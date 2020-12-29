@@ -1,8 +1,8 @@
 <div class="bills">
   <div class="header">
     <div class="name">Flat Bills</div>
-    <button class="success" (click)="addFlatBill()">Add</button>
-    <button (click)="printFlatBills()">Print to console</button>
+    <fa-icon class="add" (click)="addFlatBill()" [icon]="faPlusCircle" size="2x"></fa-icon>
+    <fa-icon class="debug" (click)="printFlatBills()" [icon]="faTerminal" size="lg"></fa-icon>
   </div>
   <div class="bill" *ngFor="let flatBill of flatBills">
     <div class="header">

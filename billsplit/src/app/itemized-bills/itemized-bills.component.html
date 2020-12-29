@@ -1,15 +1,15 @@
 <div class="bills">
   <div class="header">
     <div class="name">Itemized Bills</div>
-    <button class="success" (click)="addItemizedBill()">Add</button>
-    <button (click)="printItemizedBills()">Print to console</button>
+    <fa-icon class="add" (click)="addItemizedBill()" [icon]="faPlusCircle" size="2x"></fa-icon>
+    <fa-icon class="debug" (click)="printItemizedBills()" [icon]="faTerminal" size="lg"></fa-icon>
   </div>
   <div class="bill" *ngFor="let itemizedBill of itemizedBills">
     <div class="header">
       <div class="name">{{itemizedBill.name}}</div>
       <input type="text" [(ngModel)]="itemizedBill.name">
       <div class="cost">${{getSumOfItemizedBill(itemizedBill) | number:'1.2-2'}}</div>
-      <button class="success" (click)="addItem(itemizedBill)">Add Item</button>
+      <fa-icon (click)="addItem(itemizedBill)" [icon]="faPlusCircle"></fa-icon>
       <button class="danger" (click)="deleteItemizedBill(itemizedBill)">Delete</button>
     </div>
     <div class="items">
@@ -20,7 +20,8 @@
         <input type="text" [(ngModel)]="item.name">
         <input type="number" [(ngModel)]="item.cost">
         <div *ngFor="let person of people">
-          <button [ngClass]="getPersonButtonClass(item, person)" (click)="togglePerson(item, person)">{{person.name.charAt(0)}}</button>
+          <button [ngClass]="getPersonButtonClass(item, person)"
+            (click)="togglePerson(item, person)">{{person.name.charAt(0)}}</button>
         </div>
         <button class="danger" (click)="deleteItem(itemizedBill, item)">Delete</button>
       </div>

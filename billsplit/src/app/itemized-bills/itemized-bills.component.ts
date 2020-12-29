@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { faPlusCircle, faTerminal } from '@fortawesome/free-solid-svg-icons';
 import { BillService } from '../bill.service';
 import { Bill, FlatBill, ItemizedBill, Person } from '../models';
 
@@ -8,6 +9,9 @@ import { Bill, FlatBill, ItemizedBill, Person } from '../models';
   styleUrls: ['./itemized-bills.component.scss']
 })
 export class ItemizedBillsComponent implements OnInit {
+  
+  faPlusCircle = faPlusCircle;
+  faTerminal = faTerminal;
   
   itemizedBills: ItemizedBill[] = [];
   @Input()
