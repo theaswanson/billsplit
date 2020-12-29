@@ -1,1 +1,10 @@
-<app-bills></app-bills>
+<div class="header">
+    <div class="title">Billsplit</div>
+</div>
+<div class="content" fxLayout="row" fxLayout.lt-lg="column" fxLayoutGap="2rem">
+  <div fxHide fxShow.gt-md fxFlex="15" class="sidebar"></div>
+  <div fxFlex="70" style="flex: 1 0 auto">
+    <app-bills></app-bills>
+  </div>
+  <div fxHide fxShow.gt-md fxFlex="15" class="sidebar"></div>
+</div>

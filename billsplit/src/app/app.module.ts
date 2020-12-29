@@ -8,6 +8,7 @@ import { FlatBillsComponent } from './flat-bills/flat-bills.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BillsComponent } from './bills/bills.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { NavigationComponent } from './navigation/navigation.component';
   imports: [
     BrowserModule,
     FormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
