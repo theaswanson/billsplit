@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { faPlusCircle, faTerminal } from '@fortawesome/free-solid-svg-icons';
+import { faMinus, faPlus, faTerminal } from '@fortawesome/free-solid-svg-icons';
 import { BillService } from '../bill.service';
 import { FlatBill, Person } from '../models';
 
@@ -10,7 +10,8 @@ import { FlatBill, Person } from '../models';
 })
 export class FlatBillsComponent implements OnInit {
 
-  faPlusCircle = faPlusCircle;
+  faPlus = faPlus;
+  faMinus = faMinus;
   faTerminal = faTerminal;
   
   flatBills: FlatBill[] = [];
@@ -42,6 +43,7 @@ export class FlatBillsComponent implements OnInit {
 
   getPersonButtonClass(item: FlatBill, person: Person): any {
     return {
+      'person': true,
       'success': item.people.findIndex(x => x.id === person.id) >= 0
     };
   }

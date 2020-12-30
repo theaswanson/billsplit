@@ -1,26 +1,28 @@
-<app-itemized-bills [people]="people"></app-itemized-bills>
-<hr>
-<app-flat-bills [people]="people"></app-flat-bills>
-<hr>
+<div class="content">
+  <app-itemized-bills [people]="people"></app-itemized-bills>
+  <hr>
+  <app-flat-bills [people]="people"></app-flat-bills>
+  <hr>
 
-<table>
-  <tr>
-    <td>Total Cost</td>
-    <td><b>${{getTotalSum() | number:'1.2-2'}}</b></td>
-  </tr>
-  <tr>
-    <td>Itemized Bills Cost</td>
-    <td><b>${{getSumOfItemizedBills() | number:'1.2-2'}}</b></td>
-  </tr>
-  <tr>
-    <td>Flat Bills Cost</td>
-    <td><b>${{getSumOfFlatBills() | number:'1.2-2'}}</b></td>
-  </tr>
-</table>
+  <table>
+    <tr>
+      <td>Total Cost</td>
+      <td><b>${{getTotalSum() | number:'1.2-2'}}</b></td>
+    </tr>
+    <tr>
+      <td>Itemized Bills Cost</td>
+      <td><b>${{getSumOfItemizedBills() | number:'1.2-2'}}</b></td>
+    </tr>
+    <tr>
+      <td>Flat Bills Cost</td>
+      <td><b>${{getSumOfFlatBills() | number:'1.2-2'}}</b></td>
+    </tr>
+  </table>
 
-<table>
-  <tr *ngFor="let person of people">
-    <td>{{person.name}}</td>
-    <td><b>${{getPersonTotal(person) | number:'1.2-2'}}</b></td>
-  </tr>
-</table>
+  <table>
+    <tr *ngFor="let person of people">
+      <td>{{person.name}}</td>
+      <td><b>${{getPersonTotal(person) | number:'1.2-2'}}</b></td>
+    </tr>
+  </table>
+</div>

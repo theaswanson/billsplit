@@ -24,15 +24,15 @@ export class BillService {
     const bill = {
       id: uuid(),
       name: 'New bill',
-      items: [this.newFlatBill()]
+      items: [this.newFlatBill('New item')]
     } as ItemizedBill;
     this.itemizedBills.push(bill);
   }
 
-  private newFlatBill(): FlatBill {
+  private newFlatBill(name: string = 'New bill'): FlatBill {
     return {
       id: uuid(),
-      name: 'New bill',
+      name: name,
       cost: Number(0),
       people: []
     } as FlatBill;
@@ -43,7 +43,7 @@ export class BillService {
   }
 
   addItem(bill: ItemizedBill): void {
-    bill.items.push(this.newFlatBill());
+    bill.items.push(this.newFlatBill('New item'));
   }
 
   deleteItemizedBill(bill: ItemizedBill): void {

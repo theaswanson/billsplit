@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { faPlusCircle, faTerminal } from '@fortawesome/free-solid-svg-icons';
+import { faMinus, faPlus, faTerminal } from '@fortawesome/free-solid-svg-icons';
 import { BillService } from '../bill.service';
-import { Bill, FlatBill, ItemizedBill, Person } from '../models';
+import { FlatBill, ItemizedBill, Person } from '../models';
 
 @Component({
   selector: 'app-itemized-bills',
@@ -10,7 +10,8 @@ import { Bill, FlatBill, ItemizedBill, Person } from '../models';
 })
 export class ItemizedBillsComponent implements OnInit {
   
-  faPlusCircle = faPlusCircle;
+  faPlus = faPlus;
+  faMinus = faMinus;
   faTerminal = faTerminal;
   
   itemizedBills: ItemizedBill[] = [];
@@ -54,6 +55,7 @@ export class ItemizedBillsComponent implements OnInit {
 
   getPersonButtonClass(item: FlatBill, person: Person): any {
     return {
+      'person': true,
       'success': item.people.findIndex(x => x.id === person.id) >= 0
     };
   }
