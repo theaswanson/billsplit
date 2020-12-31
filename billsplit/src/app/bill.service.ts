@@ -8,6 +8,8 @@ import { ItemizedBill, FlatBill, Person } from './models';
 export class BillService {
 
   bills: ItemizedBill[] = [];
+  private newBillName = 'New bill';
+  private newItemName = 'New item';
 
   constructor() { }
 
@@ -18,14 +20,18 @@ export class BillService {
   addBill(): void {
     const bill = {
       id: uuid(),
-      name: 'New bill',
-      items: [this.newFlatBill('New item')]
+      name: this.newBillName,
+      items: [this.newFlatBill(this.newBillName)]
     } as ItemizedBill;
     this.bills.push(bill);
   }
 
   addItem(bill: ItemizedBill): void {
-    let newItem = this.newFlatBill('New item');
+    if (bill.items.length === 1) {
+      bill.name = bill.items[0].name;
+      bill.items[0].name = this.newItemName;
+    }
+    let newItem = this.newFlatBill(this.newItemName);
     bill.items.push(newItem);
   }
 
@@ -40,6 +46,12 @@ export class BillService {
     const index = bill.items.findIndex(x => x.id === item.id);
     if (index >= 0) {
       bill.items.splice(index, 1);
+    }
+    if (bill.items.length === 1) {
+      bill.items[0].name = bill.name;
+    }
+    if (bill.items.length === 0) {
+      this.deleteBill(bill);
     }
   }
 
@@ -87,7 +99,7 @@ export class BillService {
     return total;
   }
 
-  private newFlatBill(name: string = 'New bill'): FlatBill {
+  private newFlatBill(name: string = this.newBillName): FlatBill {
     return {
       id: uuid(),
       name: name,
