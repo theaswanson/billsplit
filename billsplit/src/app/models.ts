@@ -14,4 +14,5 @@ export class ItemizedBill extends Bill {
 
 export class FlatBill extends Bill {
     cost: number;
+    people: Person[];
 }

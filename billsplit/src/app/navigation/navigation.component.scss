@@ -1,0 +1,25 @@
+@import '../../variables';
+
+.header {
+  height: 8rem;
+  background-color: $darkteal;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  >.title {
+    color: white;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 4rem;
+    text-transform: uppercase;
+  }
+}
+
+.content {
+  min-height: 100vh;
+}
+
+.sidebar {
+  background-color: $darkgray;
+}

@@ -1,8 +1,27 @@
-<button (click)="addFlatBill()">Add Flat Bill</button>
-<div class="bill" *ngFor="let flatBill of flatBills">
-  <div class="name">{{flatBill.name}}</div>
-  <input type="text" [(ngModel)]="flatBill.name">
-  <input type="number" [(ngModel)]="flatBill.cost">
-  <button (click)="deleteFlatBill(flatBill)">Delete</button>
+<div class="bills">
+  <div class="header">
+    <div class="name">Flat Bills</div>
+    <div class="add" (click)="addFlatBill()">
+      <fa-icon [icon]="faPlus" size="md"></fa-icon>
+    </div>
+    <!-- <fa-icon class="debug" (click)="printFlatBills()" [icon]="faTerminal" size="lg"></fa-icon> -->
+  </div>
+  <div class="bill" *ngFor="let flatBill of flatBills">
+    <div class="header">
+      <input type="text" [(ngModel)]="flatBill.name">
+      <div>
+        <label>$</label>
+        <input type="number" step="0.01" [(ngModel)]="flatBill.cost">
+      </div>
+      <div class="people">
+        <div *ngFor="let person of people">
+          <button [ngClass]="getPersonButtonClass(flatBill, person)"
+            (click)="togglePerson(flatBill, person)">{{person.name.charAt(0)}}</button>
+        </div>
+      </div>
+      <div class="remove" (click)="deleteFlatBill(flatBill)">
+        <fa-icon [icon]="faMinus" size="md"></fa-icon>
+      </div>
+    </div>
+  </div>
 </div>
-<button (click)="printFlatBills()">Print to console</button>
