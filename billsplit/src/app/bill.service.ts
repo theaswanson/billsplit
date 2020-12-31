@@ -7,49 +7,32 @@ import { ItemizedBill, FlatBill, Person } from './models';
 })
 export class BillService {
 
-  itemizedBills: ItemizedBill[] = [];
-  flatBills: FlatBill[] = [];
+  bills: ItemizedBill[] = [];
 
   constructor() { }
 
-  getItemizedBills(): ItemizedBill[] {
-    return this.itemizedBills;
+  getBills(): ItemizedBill[] {
+    return this.bills;
   }
 
-  getFlatBills(): FlatBill[] {
-    return this.flatBills;
-  }
-
-  addItemizedBill(): void {
+  addBill(): void {
     const bill = {
       id: uuid(),
       name: 'New bill',
       items: [this.newFlatBill('New item')]
     } as ItemizedBill;
-    this.itemizedBills.push(bill);
-  }
-
-  private newFlatBill(name: string = 'New bill'): FlatBill {
-    return {
-      id: uuid(),
-      name: name,
-      cost: Number(0),
-      people: []
-    } as FlatBill;
-  }
-
-  addFlatBill(): void {
-    this.flatBills.push(this.newFlatBill());
+    this.bills.push(bill);
   }
 
   addItem(bill: ItemizedBill): void {
-    bill.items.push(this.newFlatBill('New item'));
+    let newItem = this.newFlatBill('New item');
+    bill.items.push(newItem);
   }
 
-  deleteItemizedBill(bill: ItemizedBill): void {
-    const index = this.itemizedBills.findIndex(x => x.id === bill.id);
+  deleteBill(bill: ItemizedBill): void {
+    const index = this.bills.findIndex(x => x.id === bill.id);
     if (index >= 0) {
-      this.itemizedBills.splice(index, 1);
+      this.bills.splice(index, 1);
     }
   }
 
@@ -57,13 +40,6 @@ export class BillService {
     const index = bill.items.findIndex(x => x.id === item.id);
     if (index >= 0) {
       bill.items.splice(index, 1);
-    }
-  }
-
-  deleteFlatBill(bill: FlatBill): void {
-    const index = this.flatBills.findIndex(x => x.id === bill.id);
-    if (index >= 0) {
-      this.flatBills.splice(index, 1);
     }
   }
 
@@ -78,30 +54,25 @@ export class BillService {
 
   getPersonTotal(person: Person) {
     let total = 0;
-    for (let itemizedBill of this.itemizedBills) {
-      total += this.getSumOfBills(itemizedBill.items, person);
+    for (let itemizedBill of this.bills) {
+      total += this.getSumOfFlatBills(itemizedBill.items, person);
     }
-    total += this.getSumOfBills(this.flatBills, person)
     return total;
   }
 
-  getSumOfItemizedBill(bill: ItemizedBill): number {
-    return this.getSumOfBills(bill.items);
+  getSumOfBill(bill: ItemizedBill): number {
+    return this.getSumOfFlatBills(bill.items);
   }
 
-  getSumOfItemizedBills(): number {
+  getSumOfBills(): number {
     let total = 0;
-    for (let itemizedBill of this.itemizedBills) {
-      total += this.getSumOfItemizedBill(itemizedBill);
+    for (let itemizedBill of this.bills) {
+      total += this.getSumOfBill(itemizedBill);
     }
     return total;
   }
 
-  getSumOfFlatBills(): number {
-    return this.getSumOfBills(this.flatBills);
-  }
-
-  getSumOfBills(bills: FlatBill[], person?: Person): number {
+  getSumOfFlatBills(bills: FlatBill[], person?: Person): number {
     let filterByPerson = person !== undefined;
     let filteredBills = filterByPerson
       ? bills.filter(x => x.people.findIndex(p => p.id === person.id) >= 0)
@@ -114,5 +85,14 @@ export class BillService {
         : bill.cost;
     }
     return total;
+  }
+
+  private newFlatBill(name: string = 'New bill'): FlatBill {
+    return {
+      id: uuid(),
+      name: name,
+      cost: Number(0),
+      people: []
+    } as FlatBill;
   }
 }

@@ -20,18 +20,8 @@ export class BillsComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  getTotalSum(): number {
-    let sumOfItemizedBills = this.billService.getSumOfItemizedBills();
-    let sumOfFlatBills = this.billService.getSumOfFlatBills();
-    return sumOfItemizedBills + sumOfFlatBills;
-  }
-
-  getSumOfItemizedBills(): number {
-    return this.billService.getSumOfItemizedBills();
-  }
-
-  getSumOfFlatBills(): number {
-    return this.billService.getSumOfFlatBills();
+  getSumOfBills(): number {
+    return this.billService.getSumOfBills();
   }
 
   getPersonTotal(person: Person): number {
