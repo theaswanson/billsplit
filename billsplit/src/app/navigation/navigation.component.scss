@@ -1,18 +1,26 @@
 @import '../../variables';
 
 .header {
-  height: 8rem;
+  height: 4rem;
   background-color: $darkteal;
   display: flex;
   justify-content: center;
   align-items: center;
 
+  @media only screen and (min-width: 960px) {
+    height: 8rem;
+  }
+
   >.title {
     color: white;
     font-style: italic;
     font-weight: 300;
-    font-size: 4rem;
+    font-size: 2rem;
     text-transform: uppercase;
+
+    @media only screen and (min-width: 960px) {
+      font-size: 4rem;
+    }
   }
 }
 

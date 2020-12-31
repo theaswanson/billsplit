@@ -58,6 +58,15 @@ input {
   text-decoration: none;
   padding: 0.5rem;
   padding-left: 1rem;
+  width: 100%;
+
+  &[type=number] {
+    width: 6rem;
+  }
+
+  @media only screen and (min-width: 960px) {
+    width: 12rem;
+  }
 
   &:focus {
     background-color: $lightgray2;
@@ -67,4 +76,18 @@ input {
   &:hover {
     background-color: $lightgray2;
   }
+}
+
+
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 0.75rem;
+  height: 2rem;
+  width: max-content;
+  padding: 0 0.5rem;
+  font-weight: bold;
 }
