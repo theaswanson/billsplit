@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { ItemizedBillsComponent } from './itemized-bills/itemized-bills.component';
-import { FlatBillsComponent } from './flat-bills/flat-bills.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BillsComponent } from './bills/bills.component';
 import { NavigationComponent } from './navigation/navigation.component';
@@ -14,7 +13,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   declarations: [
     AppComponent,
     ItemizedBillsComponent,
-    FlatBillsComponent,
     BillsComponent,
     NavigationComponent
   ],

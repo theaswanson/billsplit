@@ -14,22 +14,22 @@ export class ItemizedBillsComponent implements OnInit {
   faMinus = faMinus;
   faTerminal = faTerminal;
   
-  itemizedBills: ItemizedBill[] = [];
+  bills: ItemizedBill[] = [];
   @Input()
   people: Person[];
 
   constructor(private billService: BillService) { }
 
   ngOnInit(): void {
-    this.itemizedBills = this.billService.getItemizedBills();
+    this.bills = this.billService.getBills();
   }
 
-  addItemizedBill(): void {
-    this.billService.addItemizedBill();
+  addBill(): void {
+    this.billService.addBill();
   }
 
-  deleteItemizedBill(bill: ItemizedBill): void {
-    this.billService.deleteItemizedBill(bill);
+  deleteBill(bill: ItemizedBill): void {
+    this.billService.deleteBill(bill);
   }
 
   addItem(bill: ItemizedBill): void {
@@ -40,16 +40,16 @@ export class ItemizedBillsComponent implements OnInit {
     this.billService.deleteItem(bill, item);
   }
 
-  getSumOfItemizedBill(bill: ItemizedBill): number {
-    return this.billService.getSumOfItemizedBill(bill);
+  getSumOfBill(bill: ItemizedBill): number {
+    return this.billService.getSumOfBill(bill);
   }
 
   togglePerson(bill: FlatBill, person: Person): void {
     this.billService.togglePerson(bill, person);
   }
 
-  printItemizedBills(): void {
-    let json = JSON.stringify(this.itemizedBills);
+  printBills(): void {
+    let json = JSON.stringify(this.bills);
     console.log(json);
   }
 
