@@ -15,26 +15,26 @@ body {
 }
 
 button {
-  color: white;
-  display: inline-block;
-  text-decoration: none;
-  font-weight: bold;
-  cursor: pointer;
-  background-color: $darkgray;
-  border: none;
-  border-radius: 10px;
-  padding: 0 1rem;
-  height: 2rem;
-
   &.person {
+    color: white;
+    display: inline-block;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: $darkgray;
+    border: none;
+    border-radius: 10px;
+    padding: 0 1rem;
+    height: 2rem;
     width: 32px;
     height: 32px;
     padding: 0;
     border-radius: 10rem;
-  }
 
-  &.danger {
-    background-color: red;
+    &:focus {
+      outline: none;
+      border: 2px solid yellow;
+    }
   }
 
   &.success {
@@ -42,10 +42,6 @@ button {
     background-color: $lightgreen;
   }
 
-  &:focus {
-    outline: none;
-    border: 2px solid yellow;
-  }
 }
 
 input {
@@ -67,4 +63,14 @@ input {
   &:hover {
     background-color: $lightgray2;
   }
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }

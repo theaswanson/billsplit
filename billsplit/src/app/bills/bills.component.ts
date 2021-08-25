@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BillService } from '../bill.service';
-import { Person } from '../models';
+import { ItemizedBill, Person } from '../models';
+import { PeopleService } from '../people.service';
 
 @Component({
   selector: 'app-bills',
@@ -9,16 +10,18 @@ import { Person } from '../models';
 })
 export class BillsComponent implements OnInit {
 
-  people: Person[] = [
-    { id: '1', name: 'Adam' } as Person,
-    { id: '2', name: 'Jacob' } as Person,
-    { id: '3', name: 'Shelby' } as Person,
-    { id: '4', name: 'Bill' } as Person,
-  ];
+  bills: ItemizedBill[];
+  people: Person[];
 
-  constructor(private billService: BillService) { }
+  constructor(
+    private billService: BillService,
+    private peopleService: PeopleService
+  ) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.bills = this.billService.getBills();
+    this.people = this.peopleService.getPeople();
+  }
 
   getSumOfBills(): number {
     return this.billService.getSumOfBills();

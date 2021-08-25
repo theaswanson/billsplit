@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { v4 as uuid } from 'uuid';
+import { CacheService } from './cache.service';
 import { ItemizedBill, FlatBill, Person } from './models';
 
 @Injectable({
@@ -11,7 +12,9 @@ export class BillService {
   private newBillName = 'New bill';
   private newItemName = 'New item';
 
-  constructor() { }
+  constructor(cacheService: CacheService) {
+    this.bills = cacheService.load().bills;
+  }
 
   getBills(): ItemizedBill[] {
     return this.bills;
@@ -53,6 +56,17 @@ export class BillService {
     if (bill.items.length === 0) {
       this.deleteBill(bill);
     }
+  }
+
+  deletePerson(personToDelete: Person): void {
+    this.bills.forEach(bill => {
+      bill.items.forEach(item => {
+        const index = item.people.findIndex(person => person.id === personToDelete.id);
+        if (index >= 0) {
+          item.people.splice(index, 1);
+        }
+      })
+    });
   }
 
   togglePerson(bill: FlatBill, person: Person): void {

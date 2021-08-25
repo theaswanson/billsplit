@@ -1,0 +1,16 @@
+<div class="people">
+  <div class="header">
+    <div class="name">People</div>
+    <div class="add" (click)="addPerson()">
+      <fa-icon [icon]="faPlus" size="md"></fa-icon>
+    </div>
+  </div>
+  <div class="person" *ngFor="let person of people">
+    <div class="header">
+      <input type="text" [(ngModel)]="person.name">
+      <div class="remove" (click)="removePerson(person)">
+        <fa-icon [icon]="faMinus" size="md"></fa-icon>
+      </div>
+    </div>
+  </div>
+</div>

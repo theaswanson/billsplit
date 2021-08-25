@@ -9,20 +9,17 @@ import { FlatBill, ItemizedBill, Person } from '../models';
   styleUrls: ['./itemized-bills.component.scss']
 })
 export class ItemizedBillsComponent implements OnInit {
-  
+
   faPlus = faPlus;
   faMinus = faMinus;
   faTerminal = faTerminal;
-  
-  bills: ItemizedBill[] = [];
-  @Input()
-  people: Person[];
+
+  @Input() bills: ItemizedBill[];
+  @Input() people: Person[];
 
   constructor(private billService: BillService) { }
 
-  ngOnInit(): void {
-    this.bills = this.billService.getBills();
-  }
+  ngOnInit(): void { }
 
   addBill(): void {
     this.billService.addBill();

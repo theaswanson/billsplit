@@ -1,0 +1,8 @@
+@import '../../variables.scss';
+
+.controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: $darkgray;
+}

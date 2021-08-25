@@ -1,18 +1,19 @@
 <div class="content">
-  <app-itemized-bills [people]="people"></app-itemized-bills>
+  <app-itemized-bills [bills]="bills" [people]="people"></app-itemized-bills>
   <hr>
-
   <table>
     <tr>
       <td>Total Cost</td>
       <td><b>${{getSumOfBills() | number:'1.2-2'}}</b></td>
     </tr>
   </table>
-
   <table>
     <tr *ngFor="let person of people">
       <td>{{person.name}}</td>
       <td><b>${{getPersonTotal(person) | number:'1.2-2'}}</b></td>
     </tr>
   </table>
+  <hr>
+  <br>
+  <app-people [people]="people"></app-people>
 </div>
